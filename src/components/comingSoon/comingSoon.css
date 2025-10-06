@@ -1,0 +1,105 @@
+.movie-detail-page {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: sans-serif;
+  margin-top: 150px;
+}
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.movie-top {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.movie-trailer {
+  flex: 2;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.movie-trailer video {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.movie-info {
+  flex: 1;
+  background: #111;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.movie-info h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.movie-info p {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.movie-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.movie-buttons button {
+  background: #228ee5;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.movie-buttons button:hover {
+  background: #156bb2;
+}
+
+.movie-bottom {
+  background: #222;
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+}
+
+.movie-bottom h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.gallery {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+.gallery img {
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}

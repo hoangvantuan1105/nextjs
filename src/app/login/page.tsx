@@ -12,6 +12,7 @@ export default function LoginPage() {
     password_confirmation: "",
   });
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,11 +21,14 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setMessage("");
+    setLoading(true);
 
     const url =
       activeTab === "login"
         ? "http://127.0.0.1:8000/api/login"
         : "http://127.0.0.1:8000/api/register";
+
     const payload =
       activeTab === "login"
         ? { email: form.email, password: form.password }
@@ -43,24 +47,48 @@ export default function LoginPage() {
       });
 
       const data = await res.json();
-      setMessage(data.message);
+      setLoading(false);
 
-      if (res.ok && activeTab === "login") {
-        // ví dụ: lưu user hoặc chuyển trang
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
-        router.push("/dashboard"); // ví dụ
+
+        setMessage(data.message || "Thành công!");
+
+        router.push("/dashboard");
+      } else {
+        if (res.status === 422 && data.errors) {
+          const firstError = Object.values(data.errors)[0] as string[];
+          setMessage(firstError[0]);
+        } else {
+          setMessage(data.message || "Có lỗi xảy ra");
+        }
       }
     } catch (err) {
-      setMessage("Lỗi kết nối server");
+      setMessage("Không thể kết nối tới server");
+      setLoading(false);
     }
+  };
+
+  const handleTabChange = (tab: "login" | "signup") => {
+    setActiveTab(tab);
+    setMessage("");
   };
 
   return (
     <div className="login_page">
+      <video className="bg-video" autoPlay loop muted playsInline>
+        <source src="/assets/video/login_movie.mp4" type="video/mp4" />
+      </video>
+
+      {/* ✅ Lớp phủ mờ */}
+      <div className="overlay"></div>
+
       <i
         className="fa-solid fa-arrow-left cursor-pointer"
         onClick={() => router.back()}
       ></i>
+
       <div className="page">
         <div className="left">
           <h1 className="title">Chào mừng</h1>
@@ -68,13 +96,13 @@ export default function LoginPage() {
           <div className="tabs">
             <button
               className={`tab ${activeTab === "login" ? "active" : ""}`}
-              onClick={() => setActiveTab("login")}
+              onClick={() => handleTabChange("login")}
             >
               Đăng nhập
             </button>
             <button
               className={`tab ${activeTab === "signup" ? "active" : ""}`}
-              onClick={() => setActiveTab("signup")}
+              onClick={() => handleTabChange("signup")}
             >
               Đăng ký
             </button>
@@ -90,8 +118,10 @@ export default function LoginPage() {
                   className="input"
                   value={form.name}
                   onChange={handleChange}
+                  required
                 />
               )}
+
               <input
                 type="email"
                 name="email"
@@ -99,6 +129,7 @@ export default function LoginPage() {
                 className="input"
                 value={form.email}
                 onChange={handleChange}
+                required
               />
               <input
                 type="password"
@@ -107,12 +138,31 @@ export default function LoginPage() {
                 className="input"
                 value={form.password}
                 onChange={handleChange}
+                required
               />
-              <button type="submit" className="btn">
-                {activeTab === "login" ? "Login" : "Sign Up"}
+
+              {activeTab === "signup" && (
+                <input
+                  type="password"
+                  name="password_confirmation"
+                  placeholder="Xác nhận mật khẩu"
+                  className="input"
+                  value={form.password_confirmation}
+                  onChange={handleChange}
+                  required
+                />
+              )}
+
+              <button type="submit" className="btn_login" disabled={loading}>
+                {loading
+                  ? "Đang xử lý..."
+                  : activeTab === "login"
+                  ? "Đăng nhập"
+                  : "Đăng ký"}
               </button>
             </form>
-            {message && <p>{message}</p>}
+
+            {message && <p className="text-center mt-3">{message}</p>}
           </div>
         </div>
       </div>

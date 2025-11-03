@@ -1,0 +1,104 @@
+.user-page {
+  padding: 40px;
+  background: #0b0e16;
+  min-height: 100vh;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e90ff;
+  margin-bottom: 30px;
+}
+h1 {
+  background: linear-gradient(
+    135deg,
+    #1fb6ff 0%,
+    #45caff 40%,
+    #228ee5 70%,
+    #8f94fb 100%
+  );
+  font-size: 48px;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 700;
+}
+/* Table */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #121420;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.15);
+}
+
+.user-table th,
+.user-table td {
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.user-table thead {
+  background: #1a1d2e;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: #bbb;
+}
+
+.user-table tbody tr {
+  border-bottom: 1px solid #1e2135;
+  transition: background 0.3s ease;
+}
+
+.user-table tbody tr:hover {
+  background: #1a1d33;
+}
+
+/* Status */
+.status-active {
+  color: #00ff99;
+  font-weight: 500;
+}
+
+.status-banned {
+  color: #ff5577;
+  font-weight: 500;
+}
+
+/* Icons */
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  opacity: 0.85;
+}
+
+.view {
+  color: #1e90ff;
+}
+
+.edit {
+  color: #ffaa00;
+}
+
+.lock {
+  color: #33cc77;
+}
+
+.delete {
+  color: #ff3355;
+}

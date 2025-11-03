@@ -1,123 +1,65 @@
 "use client";
-import "./header.css";
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { Play } from "lucide-react";
+import headerStyle from "./header.module.css";
 
-export default function Header() {
+const Navbar = () => {
+  const [active, setActive] = useState(false);
+
   return (
-    <div className="container">
-      <header>
-        <div className="sticky_menu">
-          <div className="left_menu">
-            <div className="logo">
-              <Image
-                src="/assets/img/logo.png"
-                alt="poster"
-                width={30}
-                height={30}
-                className="poster"
-              />
-            </div>
+    <div className={headerStyle.nav_wrapper}>
+      <div className={headerStyle.container}>
+        <div className={headerStyle.nav}>
+          <Link href="/" className={headerStyle.logo}>
+            <Play className={headerStyle.main_color} size={28} />
+            ha<span className={headerStyle.main_color}>v</span>en
+          </Link>
 
-            <ul>
-              <li>
-                <Link href="#">Trang chủ</Link>
-              </li>
+          <ul
+            className={`${headerStyle.nav_menu} ${
+              active ? headerStyle.active : ""
+            }`}
+            id="nav_menu"
+          >
+            <li>
+              <Link href="#">Home</Link>
+            </li>
+            <li>
+              <Link href="#">Genre</Link>
+            </li>
+            <li>
+              <Link href="#">Movies</Link>
+            </li>
+            <li>
+              <Link href="/route_menu/series">Series</Link>
+            </li>
+            <li>
+              <Link href="#">About</Link>
+            </li>
+            <li>
+              <Link
+                href="/login"
+                className={`${headerStyle.btn} ${headerStyle.btn_hover}`}
+              >
+                <span>Sign in</span>
+              </Link>
+            </li>
+          </ul>
 
-              <li className="has-megamenu">
-                <Link href="#">Thể loại</Link>
-                <div className="megamenu">
-                  <div>
-                    <h4>Hành động</h4>
-                    <Link href="#">Võ thuật</Link>
-                    <Link href="#">Siêu anh hùng</Link>
-                    <Link href="#">Chiến tranh</Link>
-                  </div>
-                  <div>
-                    <h4>Tình cảm</h4>
-                    <Link href="#">Lãng mạn</Link>
-                    <Link href="#">Gia đình</Link>
-                    <Link href="#">Thanh xuân</Link>
-                  </div>
-                  <div>
-                    <h4>Kinh dị</h4>
-                    <Link href="#">Ma quái</Link>
-                    <Link href="#">Tâm lý</Link>
-                    <Link href="#">Trinh thám</Link>
-                  </div>
-                  <div>
-                    <h4>Khác</h4>
-                    <Link href="#">Hoạt hình</Link>
-                    <Link href="#">Phiêu lưu</Link>
-                    <Link href="#">Hài hước</Link>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <Link href="#">Phim lẻ</Link>
-              </li>
-              <li>
-                <Link href="#">Phim tập</Link>
-              </li>
-
-              <li className="has-megamenu">
-                <Link href="#">Quốc gia</Link>
-                <div className="megamenu">
-                  <div>
-                    <h4>Châu Á</h4>
-                    <Link href="#">Việt Nam</Link>
-                    <Link href="#">Hàn Quốc</Link>
-                    <Link href="#">Nhật Bản</Link>
-                    <Link href="#">Trung Quốc</Link>
-                  </div>
-                  <div>
-                    <h4>Châu Âu</h4>
-                    <Link href="#">Anh</Link>
-                    <Link href="#">Pháp</Link>
-                    <Link href="#">Đức</Link>
-                    <Link href="#">Nga</Link>
-                  </div>
-                  <div>
-                    <h4>Châu Mỹ</h4>
-                    <Link href="#">Mỹ</Link>
-                    <Link href="#">Canada</Link>
-                    <Link href="#">Brazil</Link>
-                    <Link href="#">Mexico</Link>
-                  </div>
-                  <div>
-                    <h4>Khác</h4>
-                    <Link href="#">Ấn Độ</Link>
-                    <Link href="#">Úc</Link>
-                    <Link href="#">Thái Lan</Link>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <Link href="#">Hỗ trợ</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="right_menu">
-            <input type="checkbox" id="toggleSearch" hidden />
-            <label htmlFor="toggleSearch" className="icon">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </label>
-            <div className="search_box">
-              <input type="text" placeholder="Tìm kiếm phim..." />
-            </div>
-
-            <i className="fa-solid fa-bell"></i>
-            <Link href="/login">
-              <i className="fa-solid fa-user"></i>
-            </Link>
-
-            <i className="fa-regular fa-sun"></i>
+          <div
+            className={`${headerStyle.hamburger_menu} ${
+              active ? headerStyle.active : ""
+            }`}
+            id="hamburger_menu"
+            onClick={() => setActive(!active)}
+          >
+            <div className={headerStyle.hamburger}></div>
           </div>
         </div>
-      </header>
+      </div>
     </div>
   );
-}
+};
+
+export default Navbar;

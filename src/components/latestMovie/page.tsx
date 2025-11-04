@@ -21,7 +21,7 @@ export default function FeatureFilm() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://tuanhoang.io.vn/movies")
+    fetch("https://tuanhoang.io.vn/api/movies")
       .then((res) => res.json())
       .then((data) => {
         const category = data.filter(

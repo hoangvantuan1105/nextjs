@@ -65,7 +65,7 @@ export default function AddItem() {
       if (movieBanner) formData.append("movie_banner", movieBanner);
       if (video) formData.append("video", video);
 
-      const res = await fetch("http://127.0.0.1:8000/api/movies", {
+      const res = await fetch("https://tuanhoang.io.vn/api/movies", {
         method: "POST",
         body: formData,
       });

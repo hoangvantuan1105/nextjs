@@ -63,7 +63,7 @@ export default function StreamPage() {
 
   useEffect(() => {
     if (!id) return;
-    fetch(`http://127.0.0.1:8000/api/movies/${id}/views`, {
+    fetch(`https://tuanhoang.io.vn/api/movies/${id}/views`, {
       method: "POST",
     }).catch((err) => console.error("Lỗi tăng lượt xem:", err));
   }, [id]);
@@ -72,13 +72,15 @@ export default function StreamPage() {
     if (!id) return;
     const fetchData = async () => {
       try {
-        const resMovie = await fetch(`http://127.0.0.1:8000/api/movies/${id}`);
+        const resMovie = await fetch(
+          `https://tuanhoang.io.vn/api/movies/${id}`
+        );
         if (!resMovie.ok) throw new Error("Không tìm thấy phim");
         const movieData = await resMovie.json();
         setMovie(movieData);
 
         const resEp = await fetch(
-          `http://127.0.0.1:8000/api/episodes/movie/${id}`
+          `https://tuanhoang.io.vn/api/episodes/movie/${id}`
         );
         const episodesData = await resEp.json();
         setEpisodes(episodesData);

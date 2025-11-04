@@ -17,7 +17,7 @@ export default function AddEpisode() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/movies");
+        const res = await fetch("https://tuanhoang.io.vn/api/movies");
         const data = await res.json();
         setMovies(data);
       } catch (error) {
@@ -53,7 +53,7 @@ export default function AddEpisode() {
       formData.append("duration", form.duration);
       formData.append("video_url", form.video_url);
 
-      const res = await fetch("https://tuanhoang.io.vn/backend/api/episodes", {
+      const res = await fetch("https://tuanhoang.io.vn/api/episodes", {
         method: "POST",
         body: formData,
       });

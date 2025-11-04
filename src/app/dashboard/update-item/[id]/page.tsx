@@ -55,13 +55,13 @@ export default function UpdateItem() {
           setPoster(
             data.poster.startsWith("http")
               ? data.poster
-              : `http://127.0.0.1:8000/storage/${data.poster}`
+              : `https://tuanhoang.io.vn/storage/${data.poster}`
           );
         if (data.cover)
           setCover(
             data.cover.startsWith("http")
               ? data.cover
-              : `http://127.0.0.1:8000/storage/${data.cover}`
+              : `https://tuanhoang.io.vn/storage/${data.cover}`
           );
       } catch (err) {
         console.error(err);
@@ -95,7 +95,7 @@ export default function UpdateItem() {
       if (cover instanceof File) formData.append("cover", cover);
       if (video instanceof File) formData.append("video", video);
 
-      const res = await fetch(`http://127.0.0.1:8000/api/movies/${id}`, {
+      const res = await fetch(`https://tuanhoang.io.vn/api/movies/${id}`, {
         method: "POST",
         body: formData,
       });

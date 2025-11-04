@@ -30,10 +30,10 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const moviesRes = await fetch("http://127.0.0.1:8000/api/movies");
+        const moviesRes = await fetch("https://tuanhoang.io.vn/api/movies");
         const moviesData = await moviesRes.json();
 
-        const usersRes = await fetch("http://127.0.0.1:8000/api/users");
+        const usersRes = await fetch("https://tuanhoang.io.vn/api/users");
         const usersData = await usersRes.json();
 
         setMovies(moviesData);

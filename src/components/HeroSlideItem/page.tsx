@@ -27,7 +27,7 @@ export default function HeroSlide() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/movies")
+    fetch("https://tuanhoang.io.vn/api/movies")
       .then((res) => res.json())
       .then((data) => {
         const bannerMovies = data.filter(

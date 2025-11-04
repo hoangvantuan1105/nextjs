@@ -14,7 +14,7 @@ export default function MovieDetailPage() {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/movies/${id}`);
+        const res = await fetch(`https://tuanhoang.io.vn/api/movies/${id}`);
         if (!res.ok) throw new Error("Không tìm thấy phim");
         const data = await res.json();
         setMovie(data);

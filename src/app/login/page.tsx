@@ -26,8 +26,8 @@ export default function LoginPage() {
 
     const url =
       activeTab === "login"
-        ? "http://127.0.0.1:8000/api/login"
-        : "http://127.0.0.1:8000/api/register";
+        ? "https://tuanhoang.io.vn/api/login"
+        : "https://tuanhoang.io.vn/api/register";
 
     const payload =
       activeTab === "login"

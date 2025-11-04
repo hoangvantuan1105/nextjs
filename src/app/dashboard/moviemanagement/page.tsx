@@ -12,7 +12,7 @@ export default function MoviesPage() {
 
   const fetchMovies = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/movies");
+      const res = await fetch("https://tuanhoang.io.vn/api/movies");
       const data = await res.json();
       setMovies(data);
     } catch (error) {
@@ -29,7 +29,7 @@ export default function MoviesPage() {
     if (!confirm(`Bạn có chắc muốn xóa phim "${title}" không?`)) return;
 
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/movies/${id}`);
+      await axios.delete(`https://tuanhoang.io.vn/movies/${id}`);
       alert("Xóa phim thành công!");
       setMovies((prev) => prev.filter((movie) => movie.id !== id));
     } catch (error) {

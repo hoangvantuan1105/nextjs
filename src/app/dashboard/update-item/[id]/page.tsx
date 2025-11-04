@@ -31,7 +31,7 @@ export default function UpdateItem() {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/movies/${id}`);
+        const res = await fetch(`https://tuanhoang.io.vn/api/movies/${id}`);
         if (!res.ok) throw new Error("Không lấy được dữ liệu phim");
         const data = await res.json();
 

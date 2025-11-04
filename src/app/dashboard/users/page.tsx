@@ -11,7 +11,7 @@ export default function UsersPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/users");
+        const res = await fetch("https://tuanhoang.io.vn/api/users");
         const data = await res.json();
         setUsers(data);
       } catch (error) {

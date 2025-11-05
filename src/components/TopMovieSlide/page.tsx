@@ -23,7 +23,7 @@ export default function TopMoviesSlide() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://tuanhoang.io.vn//api/movies")
+    fetch("https://tuanhoang.io.vn/api/movies")
       .then((res) => res.json())
       .then((data) => {
         const trendMovies = data.filter(
